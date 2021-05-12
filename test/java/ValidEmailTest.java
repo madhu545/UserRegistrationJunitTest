@@ -8,11 +8,11 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class ValidEmailTest {
-    private String email2Test;
+    private  String email2Test;
     private boolean expectedResult;
     UserRegistration userRegistration;
 
-    public ValidEmailTest(String email, boolean expectedResult) {
+    public ValidEmailTest(String email ,boolean expectedResult) {
         super();
         this.email2Test = email;
         this.expectedResult = expectedResult;
@@ -25,7 +25,7 @@ public class ValidEmailTest {
 
     @Parameterized.Parameters
     public static Collection data() {
-        return Arrays.asList(new Object[][]{{"abc@yahoo.com", true},
+        return Arrays.asList(new Object[][] { { "abc@yahoo.com" ,true },
                 {"abc-100@yahoo.com", true},
                 {"abc.100@yahoo.com", true},
                 {"abc111@abc.com", true},
@@ -46,14 +46,12 @@ public class ValidEmailTest {
                 {"abc.@gmail.com", false},
                 {"abc@abc@gmail.com", false},
                 {"abc@gmail.com.1a", false},
-                {"abc@gmail.com.aa.au", false},});
+                {"abc@gmail.com.aa.au", false},} );
     }
 
     @Test
     public void givenEmailAll() throws UserRegistrationException {
         boolean result = userRegistration.emailValidation(this.email2Test);
-        Assert.assertEquals(this.expectedResult, result);
+        Assert.assertEquals(this.expectedResult,result);
     }
 }
-
-
